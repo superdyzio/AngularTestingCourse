@@ -1,0 +1,19 @@
+<h2>My Heroes</h2>
+
+<div>
+  <label>Hero name:
+    <input #heroName/>
+  </label>
+  <label>Hero strength:
+    <input #heroStrength/>
+  </label>
+  <button (click)="add(heroName.value, heroStrength.value); heroName.value=''; heroStrength.value=''">
+    add
+  </button>
+</div>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <atc-hero [hero]="hero" (delete)="delete(hero)"></atc-hero>
+  </li>
+</ul>
