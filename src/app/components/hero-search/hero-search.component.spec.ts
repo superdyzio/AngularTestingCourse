@@ -40,7 +40,27 @@ describe('HeroSearchComponent', () => {
     component.ngOnInit();
   });
 
-  it('should pass', () => {
-    expect(true).toBe(true);
+  it('should push new search term to searchTerms subject', () => {
+    const searchTerm: string = 'searchTerm';
+
+    component['searchTerms'].subscribe((term: string) => {
+      expect(term).toEqual(searchTerm);
+    });
+
+    component.search(searchTerm);
+  });
+
+  it('should return filtered list of heroes', (done) => {
+    const searchTerm: string = 'SuperDude';
+    const filteredHeroes: Hero[] = heroes.filter(hero => hero.name.includes(searchTerm));
+
+    component.heroes$.subscribe((heroesList: Hero[]) => {
+      expect(heroesList).toEqual(filteredHeroes);
+      expect(mockHeroService.searchHeroes).toHaveBeenCalledTimes(1);
+      expect(mockHeroService.searchHeroes).toHaveBeenCalledWith(searchTerm);
+      done();
+    });
+
+    component.search(searchTerm);
   });
 });
