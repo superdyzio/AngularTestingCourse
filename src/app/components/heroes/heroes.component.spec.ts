@@ -2,13 +2,14 @@ import {of} from 'rxjs';
 
 import {Hero} from '../../interfaces/hero.interface';
 import {HeroService} from '../../services/hero.service';
+import {Spied} from '../../types/spied.type';
 
 import {HeroesComponent} from './heroes.component';
 
 describe('HeroesComponent', () => {
   let component: HeroesComponent;
   let HEROES: Hero[];
-  let mockHeroService: any; // tslint:disable-line:no-any
+  let mockHeroService: Spied<HeroService>;
 
   beforeEach(() => {
     HEROES = [
@@ -21,7 +22,7 @@ describe('HeroesComponent', () => {
     mockHeroService.getHeroes.and.returnValue(of(HEROES));
     mockHeroService.deleteHero.and.returnValue(of(true));
 
-    component = new HeroesComponent(mockHeroService);
+    component = new HeroesComponent(<HeroService><unknown>mockHeroService);
   });
 
   describe('ngOnInit', () => {
