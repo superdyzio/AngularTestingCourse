@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {of} from 'rxjs';
 
@@ -63,4 +63,17 @@ describe('HeroSearchComponent', () => {
 
     component.search(searchTerm);
   });
+
+  it('should not call heroService.searchHeroes when search term has not changed', fakeAsync(() => {
+    const searchTerm: string = 'SuperDude';
+
+    component.heroes$.subscribe();
+
+    component.search(searchTerm);
+    tick(350);
+    component.search(searchTerm);
+    tick(350);
+
+    expect(mockHeroService.searchHeroes).toHaveBeenCalledTimes(1);
+  }));
 });

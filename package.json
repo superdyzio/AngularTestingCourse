@@ -2,7 +2,7 @@
   "name": "angular-testing-course",
   "author": "Dawid Perdek <perdekdawid@gmail.com> (https://github.com/superdyzio)",
   "description": "Simple Angular app for Angular Testing course.",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
