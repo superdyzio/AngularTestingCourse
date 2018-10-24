@@ -1,4 +1,4 @@
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Location} from '@angular/common';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
@@ -75,18 +75,17 @@ describe('HeroDetailComponent', () => {
 
       expect(mockLocation.back).toHaveBeenCalledTimes(1);
     });
+  });
 
-    it('should call location.back', inject([Location], (location) => {
-      component.goBack();
+  describe('save', () => {
+    it('should call heroService.updateHero and then call goBack', () => {
+      const goBackSpy: jasmine.Spy = spyOn(component, 'goBack');
+      fixture.detectChanges();
 
-      expect(location.back).toHaveBeenCalledTimes(1);
-    }));
+      component.save();
 
-    it('should call location.back', () => {
-      const locationSpy: Spied<Location> = TestBed.get(Location);
-      component.goBack();
-
-      expect(locationSpy.back).toHaveBeenCalledTimes(1);
+      expect(mockHeroService.updateHero).toHaveBeenCalledWith(thirdHero);
+      expect(goBackSpy).toHaveBeenCalledTimes(1);
     });
   });
 });
