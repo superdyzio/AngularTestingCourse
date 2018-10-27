@@ -40,11 +40,12 @@ describe('HeroSearchComponent', () => {
     component.ngOnInit();
   });
 
-  it('should push new search term to searchTerms subject', () => {
+  it('should push new search term to searchTerms subject', (done) => {
     const searchTerm: string = 'searchTerm';
 
     component['searchTerms'].subscribe((term: string) => {
       expect(term).toEqual(searchTerm);
+      done();
     });
 
     component.search(searchTerm);

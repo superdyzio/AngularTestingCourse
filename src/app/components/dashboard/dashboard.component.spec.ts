@@ -19,7 +19,7 @@ describe('DashboardComponent', () => {
   beforeEach(async(() => {
     HEROES = [
       {id: 1, name: 'SpiderDude', strength: 8},
-      {id: 2, name: 'WonderfulWoman', strength: 24},
+      {id: 2, name: 'WonderfulWoman', strength: 25},
       {id: 3, name: 'SuperDude', strength: 15},
       {id: 4, name: 'TurboDude', strength: 25},
       {id: 5, name: 'SpiderWoman', strength: 5},
@@ -27,8 +27,8 @@ describe('DashboardComponent', () => {
     ];
     fourStrongestHeroSortedByStrength = [
       {id: 6, name: 'CatWoman', strength: 100},
+      {id: 2, name: 'WonderfulWoman', strength: 25},
       {id: 4, name: 'TurboDude', strength: 25},
-      {id: 2, name: 'WonderfulWoman', strength: 24},
       {id: 3, name: 'SuperDude', strength: 15},
     ];
 
