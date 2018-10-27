@@ -9,7 +9,7 @@ declare const require: any; // tslint:disable-line:no-any
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
+  platformBrowserDynamicTesting(),
 );
 // Then we find all the tests.
 const context: any = require.context('./', true, /\.spec\.ts$/); // tslint:disable-line:no-any

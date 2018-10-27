@@ -99,7 +99,7 @@ describe('HeroesComponent', () => {
     });
   });
 
-  describe('deleteHero', () => {
+  describe('delete', () => {
     it('should remove hero from list', () => {
       const heroToRemove: Hero = HEROES[1];
       component.heroes = HEROES;

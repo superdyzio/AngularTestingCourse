@@ -1,6 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {HttpClientModule} from '@angular/common/http';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -11,8 +13,6 @@ import {MessagesComponent} from './components/messages/messages.component';
 import {HeroSearchComponent} from './components/hero-search/hero-search.component';
 import {HeroComponent} from './components/hero/hero.component';
 import {StrengthPipe} from './pipes/strength.pipe';
-import {HttpClientModule} from '@angular/common/http';
-import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './services/in-memory-data.service';
 import {MessageService} from './services/message.service';
 import {HeroService} from './services/hero.service';
@@ -42,7 +42,7 @@ import {HeroService} from './services/hero.service';
     ),
   ],
   providers: [HeroService, MessageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

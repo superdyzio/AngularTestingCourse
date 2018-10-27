@@ -25,7 +25,7 @@ export class HeroService {
   public getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
-        tap(heroes => this.log(`fetched heroes`)),
+        tap(_ => this.log(`fetched heroes`)),
         catchError(this.handleError('getHeroes', [])),
       );
   }
@@ -66,10 +66,8 @@ export class HeroService {
 
   /** POST: add a new hero to the server */
   public addHero(heroToAdd: CreateHeroData): Observable<Hero> {
-    console.log(heroToAdd);
     return this.http.post<Hero>(this.heroesUrl, heroToAdd, httpOptions).pipe(
       tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
-      tap(console.log),
       catchError(this.handleError<Hero>('addHero')),
     );
   }
@@ -101,14 +99,9 @@ export class HeroService {
    */
   private handleError<T>(operation: string = 'operation', result?: T): (error: Error) => Observable<T> {
     return (error: Error): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
+      console.error(error);
       this.log(`${operation} failed: ${error.message}`);
 
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
